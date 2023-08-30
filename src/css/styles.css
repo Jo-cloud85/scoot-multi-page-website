@@ -216,11 +216,13 @@ header nav ul {
 header {
     position: relative;
     height: 6rem;
-    padding: 2rem 10.5rem;
+    max-width: 85rem;
+    margin: auto;
+    gap: calc(4rem + 3rem);
 }
 
 header .logo {
-    padding-right: 3.64rem;
+    margin-left: 4rem;
 }
 
 .mobile-nav-toggle {
@@ -237,6 +239,10 @@ header nav {
 
 header nav ul {
     gap: 2rem;
+}
+
+header #primary-nav-btn {
+    margin-right: 4rem;
 }
 
 nav a { /*for underline hover effect*/
@@ -269,6 +275,14 @@ nav a:hover::before { /*for underline hover effect*/
         justify-content: center;
         position: relative;
         padding: 0 2.45rem;
+    }
+
+    header .logo {
+        margin-left: 0;
+    }
+
+    header #primary-nav-btn {
+        margin-right: 0;
     }
 }
 
@@ -308,7 +322,7 @@ nav a:hover::before { /*for underline hover effect*/
         background-color: hsla(216, 16%, 35%, 1);
 
         height: calc(100vh - 4.29rem);
-        width: 66%;
+        max-width: 66%;
         position: absolute;
         top: 4.3rem;
         left: 0;
@@ -351,41 +365,52 @@ nav a:hover::before { /*for underline hover effect*/
     background-size: cover;
     background-position: center;
     position: relative;
-    height: 40.625rem;
     overflow: hidden;
 }
 
 #hero--main-content {
     height: 100%;
     text-align: center;
-    padding: 7.2rem 2rem;
+    padding: 7.2rem 2rem 11.2rem 2rem;
 }
 
 #hero--main-content h1 {
-    max-width: 20rem;
+    max-width: 13ch;
     margin: auto;
     padding-bottom: 1.5rem;
-}
-
-#horizontal-yellow-line {
-    display: none;
 }
 
 #hero--main-content p {
     color: var(--snow); /*overriding typical setting*/
     margin: auto;
     padding-bottom: 2rem;
-    
 }
 
 #hero-section .right-arrow {
     position: absolute;
     bottom: 2rem;
-    right: 60%;
+    left: -15rem;
 }
 
-.white-circles {
+.white-circles, #horizontal-yellow-line {
     display: none;
+}
+
+.right-arrow path, 
+.left-downward-arrow path, 
+.left-upward-arrow path{
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 2s linear infinite;
+}
+  
+@keyframes dash {
+    from {
+        stroke-dashoffset: 822;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 @media (min-width: 768px) { /*For tablet*/
@@ -415,42 +440,52 @@ nav a:hover::before { /*for underline hover effect*/
         background-image: url("../assets/images/home-hero-desktop.jpg");
     }
 
+    #hero-section-container {
+        padding-top: 10rem;
+        padding-bottom: 9.5rem;
+        position: relative;
+        max-width: 85rem;
+        margin: auto;
+    }
+
     #hero--main-content {
         text-align: start;
-        padding: 9.5rem 0;
+        padding: 0;
     }
 
     #hero--main-content h1 {
-        max-width: 36rem;
-        margin-left: clamp(2.5rem, 8vw, 10.5rem);
+        max-width: 16ch;
+        margin-left: 4rem;
         padding-bottom: 2.5rem;
     }
 
     #horizontal-yellow-line {
-        display: inline-block;
+        display: block;
         position: absolute;
-        bottom: 19rem;
-        left: -5rem;
+        top: 52%;
+        left: -7rem;
     }
 
     #hero--main-content p {
-        max-width: 31rem;
-        margin-left: clamp(5rem, 14vw, 16rem);
-        padding-bottom: 2rem;
+        max-width: 50ch;
+        margin: 2.5rem 0 2.5rem 9.5rem;
+        text-align: justify;
     }
 
     #hero--main-content .primary {
-        margin-left: clamp(5rem, 14vw, 16rem);
+        margin-left: 9.5rem;
     }
 
     #hero-section .right-arrow {
-        bottom: 10rem;
-        left: clamp(30vw, 60vw, 80vw);
+        top: 52%;
+        left: 43rem;
     }
 
     #hero-section .white-circles {
-        right: -3.5rem !important;
-        bottom: 11rem !important;
+        bottom: unset;
+        top: 63.5%;
+        right: unset;
+        left: 78rem;
     }
 }
 
@@ -464,9 +499,34 @@ nav a:hover::before { /*for underline hover effect*/
     padding: 7.5rem 2rem 5.5rem 2rem;
 }
 
-#features-section img {
+#features-section .features-icon {
     width: 3.5rem;
     height: 3.5rem;
+    animation: bounce 3s ease-in infinite;
+}
+
+@keyframes bounce {
+    70% {
+        transform: translateY(0%);
+    }
+    80% {
+        transform: translateY(-20%);
+    }
+    90% {
+        transform: translateY(0%);
+    }
+    95% {
+        transform: translateY(-10%);
+    }
+    97% {
+        transform: translateY(0%);
+    }
+    99% {
+        transform: translateY(-2%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 #features-section h4 {
@@ -477,7 +537,15 @@ nav a:hover::before { /*for underline hover effect*/
     padding-bottom: 3rem;
 }
 
-#vertical-gray-line {
+#pick-scooter {
+    animation-delay: 1s !important;
+}
+  
+#enjoy-ride {
+    animation-delay: 1.8s !important;
+}
+
+#gray-line {
     display: none;
 }
 
@@ -485,9 +553,10 @@ nav a:hover::before { /*for underline hover effect*/
     #features-section {
         text-align: start;
         padding: 7.63rem 6rem 5.5rem 8rem;
+        position: relative;
     }
     
-    #features-section img {
+    #features-section .features-icon {
         width: 6rem;
         height: 6rem;
     }
@@ -513,25 +582,25 @@ nav a:hover::before { /*for underline hover effect*/
         display: block;
         position: absolute;
         z-index: -1;
-        rotate: 90deg;
-        left: 4.25rem;
-        bottom: 0;
-        transform: scaleX(2.5);
-    }
-
-    #features-section #gray-line path {
-        stroke: var(--light-grey);
+        background-color: var(--light-grey);
+        width: 1rem;
+        height: 95%;
+        top: -10rem;
+        left: 10.4rem;
     }
 }
 
 @media (min-width: 1024px) {
     #features-section {
-        padding: 10rem 10.5rem;
+        max-width: 85rem;
+        margin: auto;
+        padding: 10rem 0;
     }
 
     #features-section ul {
         display: flex;
-        gap: 2rem;
+        gap: 3rem;
+        margin: 0 4rem;
     }
 
     #features-section li {
@@ -539,11 +608,15 @@ nav a:hover::before { /*for underline hover effect*/
         gap: 2.5rem;
     }
 
+    #features-section p {
+        text-align: justify;
+    }
+
     #features-section #gray-line {
-        rotate: 0deg;
-        left: 4.25rem;
-        bottom: 2rem;
-        transform: scaleX(1);
+        width: 100%;
+        height: 1rem;
+        top: 12.5rem;
+        left: -26rem;
     }
 }
 
@@ -554,11 +627,11 @@ nav a:hover::before { /*for underline hover effect*/
 ----------------------------------- */
 .description-section {
     overflow: hidden;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
     text-align: center;
 }
 
-.description-section ul li {
+.description-section .description {
     padding-bottom: 7.5rem;
     position: relative;
 }
@@ -574,13 +647,13 @@ nav a:hover::before { /*for underline hover effect*/
 }
 
 #description__1 .left-downward-arrow {
-    top: 22%;
+    top: 12rem;
     left: 0;
 }
 
 #description__2 .right-arrow {
     top: 0;
-    left: -10%;
+    right: 30%;
 }  
 
 #description__3 .left-downward-arrow {
@@ -596,7 +669,6 @@ nav a:hover::before { /*for underline hover effect*/
 
 .description p {
     padding: 1.5rem 0;
-    max-width: 19.5rem;
     margin: auto;
 }
 
@@ -604,15 +676,26 @@ nav a:hover::before { /*for underline hover effect*/
     display: none;
 }
 
-
 @media (min-width: 768px) {
     .description-section ul li {
-        padding-bottom: 9.38rem;;
+        padding-bottom: 9.38rem;
     }
 
     #description__1 .left-downward-arrow {
-        right: -10%;
-        left: auto;
+        top: 19.5rem;
+        left: unset;
+        right: -5%;
+    }
+
+    #description__2 .right-arrow {
+        top: 0;
+        right: unset;
+        left: -10%;
+    }  
+
+    #description__3 .left-downward-arrow {
+        top: 5.3rem;
+        left: 50%;
     }
 
     .description h2 {
@@ -642,7 +725,7 @@ nav a:hover::before { /*for underline hover effect*/
 
 @media (min-width: 1024px) {
     .description-section {
-        padding: 0 10.5rem;
+        padding-bottom: 12rem;
         text-align: start;
     }
 
@@ -650,6 +733,9 @@ nav a:hover::before { /*for underline hover effect*/
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0 4rem 10rem 4rem;
+        max-width: 85rem;
+        margin: auto;
     }
 
     .description-section #description__1,
@@ -663,7 +749,11 @@ nav a:hover::before { /*for underline hover effect*/
 
     #description__1 .left-downward-arrow {
         right: -10%;
-        top: 10rem;
+    }
+
+    #description__3 .left-downward-arrow {
+        left: unset;
+        right: -35%;
     }
 
     .description-section .description h2 {
@@ -728,7 +818,12 @@ nav a:hover::before { /*for underline hover effect*/
     .hero {
         height: 12.5rem;
         justify-items: flex-start;
-        padding-left: 6rem;
+    }
+
+    .hero .container {
+        width: 85rem;
+        padding-left: 4rem;
+        margin: auto;
     }
 
     #hero--about {
@@ -750,7 +845,6 @@ nav a:hover::before { /*for underline hover effect*/
 
 @media (min-width: 1024px) { /*For desktop*/
     .hero {
-        padding-left: 10.5rem;
         margin-bottom: 7.5rem;
     }
 
@@ -769,6 +863,10 @@ nav a:hover::before { /*for underline hover effect*/
     About - Description Section (V similar to Description Section) 
 
 ----------------------------------- */
+#about--description-section {
+    padding-bottom: 4.5rem;
+}
+
 #about--description__1 .left-upward-arrow,
 #about--description__2 .right-arrow {
     position: absolute;
@@ -786,12 +884,14 @@ nav a:hover::before { /*for underline hover effect*/
 
 @media (min-width: 768px) {
     #about--description__1 .left-upward-arrow {
-        right: -3.5%;
-        left: auto;
+        top: 45%;
+        left: unset;
+        right: -8%;
     }
 
     #about--description__2 .right-arrow {
-        left: -5%;
+        right: unset;
+        left: -10%;
     } 
 
     #about--description-section ul li {
@@ -1113,14 +1213,19 @@ ul li input[type=checkbox]:checked ~ i:after {
 }
 
 @media (min-width: 1024px) {
+    #careers--description-section {
+        padding-bottom: 0;
+    }
+
     #careers--jobs-section {
-        padding: 0 10.5rem;
+        max-width: 85rem;
+        margin: auto;
     }    
 }
 
 /* --------------------------------
 
-    Locations - Jobs Section 
+    Locations - Maps Section 
 
 ----------------------------------- */
 #locations--info-section {
@@ -1146,17 +1251,26 @@ ul li input[type=checkbox]:checked ~ i:after {
 #more-info-text {
     padding-top: 3.5rem;
     text-align: center;
+    padding: 0 4rem;
+    max-width: 85rem;
+    margin: auto;
 }
 
 #more-info-text p {
     padding: 2rem 0;
 }
 
+#more-info-text .primary {
+    min-width: 12rem; 
+}
+
 @media (min-width: 768px) {
     #locations--info-section #world-map {
         position: relative;
+        width: 48rem;
+        margin: auto;
+        padding-top: 3rem;
     }
-
 
     #locations--info-section {
         padding: 0 2rem 7.5rem 2rem;
@@ -1185,23 +1299,23 @@ ul li input[type=checkbox]:checked ~ i:after {
     }
 
     #new-york {
-        top: 18.5%;
-        left: 18%;
+        top: 22%;
+        left: 16%;
     }
 
     #london {
-        top: 11%;
-        left: 38.5%;
-    }
-
-    #jakarta {
-        top: 53.5%;
-        left: 73%;
+        top: 16%;
+        left: 36%;
     }
     
     #yokohama {
-        top: 23%;
-        left: 80.5%;
+        top: 25%;
+        left: 78%;
+    }
+
+    #jakarta {
+        top: 50%;
+        left: 71%;
     }
 
     #more-info-text p {
@@ -1212,8 +1326,8 @@ ul li input[type=checkbox]:checked ~ i:after {
 }
 
 @media (min-width: 1024px) {
-    #locations--info-section {
-        padding: 0 10.5rem 7.5rem 10.5rem;
+    #locations--info-section #world-map {
+        width: 68.5rem;
     }
 
     #more-info-text {
@@ -1222,6 +1336,26 @@ ul li input[type=checkbox]:checked ~ i:after {
         gap: 3rem;
         justify-content: space-between;
         align-items: center;
+    }
+
+    #new-york {
+        top: 22.5%;
+        left: 18.5%;
+    }
+
+    #london {
+        top: 16.5%;
+        left: 39%;
+    }
+    
+    #yokohama {
+        top: 27%;
+        left: 80.5%;
+    }
+
+    #jakarta {
+        top: 53.5%;
+        left: 73.5%;
     }
 
     #more-info-text h2 {
@@ -1292,9 +1426,11 @@ ul li input[type=checkbox]:checked ~ i:after {
 @media (min-width: 1024px) {
     #cta--main-content {
         display: flex;
-        padding: 6.4rem 10.5rem;
+        padding: 6.4rem 4rem;
         text-align: start;
         justify-content: space-between;
+        max-width: 85rem;
+        margin: auto;
     }
 
     #cta--main-content #cta--heading {
@@ -1316,6 +1452,11 @@ footer {
     background-color: var(--very-dark-navy);
     text-align: center;
     padding: 4rem 0 5.5rem 0;
+}
+
+footer .container {
+    max-width: 85rem;
+    margin: auto;
 }
 
 footer .logo {
@@ -1359,6 +1500,13 @@ footer nav a::before { /*for underline hover effect*/
         padding: 2.2rem 2.5rem;
     }
 
+    footer .container {
+        display: flex;
+        width: 85rem;
+        margin: auto;
+        padding: 0;
+    }
+
     footer .logo {
         padding-right: 3.64rem;
     }
@@ -1381,7 +1529,7 @@ footer nav a::before { /*for underline hover effect*/
 }
 
 @media (min-width: 1024px) {
-    footer {
-        padding: 2.2rem 10.5rem;
+    footer .container {
+        padding: 0 4rem;
     }
 }

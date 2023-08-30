@@ -24,10 +24,14 @@ Users should be able to:
 
 ### Screenshot
 
-- Main: ![./screenshots/Main.png](./screenshots/Main.png)
-- Main-tablet: ![./screenshots/Main-tablet.png](./screenshots/Main-tablet.png)
-- About-tablet: ![./screenshots/About%20page_faq+cta+footer-tablet.png](./screenshots/About%20page_faq+cta+footer-tablet.png)
-- Careers-tablet: ![./screenshots/Careers%20page_jobs-tablet.png](./screenshots/Careers%20page_jobs-tablet.png)
+- Main: 
+![./screenshots/Main.png](./screenshots/Main.png)
+- Main-tablet: 
+![./screenshots/Main-tablet.png](./screenshots/Main-tablet.png)
+- About-tablet: 
+![./screenshots/About%20page_faq+cta+footer-tablet.png](./screenshots/About%20page_faq+cta+footer-tablet.png)
+- Careers-tablet: 
+![./screenshots/Careers%20page_jobs-tablet.png](./screenshots/Careers%20page_jobs-tablet.png)
 
 ### Links
 
